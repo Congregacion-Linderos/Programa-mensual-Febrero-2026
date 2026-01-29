@@ -72,7 +72,7 @@ body.dark .dia-item{background:rgba(255,255,255,0.08)}
 
 <script>
 /* === PROGRAMA MES: SIN CAMBIOS === */
-const programaMes = { /* (todo tu objeto igual, febrero 2026) */ 
+const programaMes = {
 "2026-02-01":{manana:{hora:"09:30",encargado:"Reunion Finde semana",territorio:"-",direccion:"Salon Del reino",numero:"-"}},
 "2026-02-02":{manana:{hora:"09:30",encargado:"Luis Troncoso",territorio:"14",direccion:"Familia Mamani (Fancisco Urzua)",numero:"4077"},tarde:{hora:"18:15",encargado:"Hector Carcamo",territorio:"12",direccion:"hna Soledad (Orozimbo Barboza)",numero:"3892"}},
 "2026-02-03":{manana:{hora:"09:30",encargado:"Benjamin Manzano",territorio:"18",direccion:"Familia Pires (Rio Caquena Norte)",numero:"4120"},tarde:{hora:"18:15",encargado:"Edmundo J.",territorio:"5",direccion:"Familia Guerrero (Orozimbo Barboza)",numero:"4249"}},
@@ -131,7 +131,7 @@ function cargarListaDias(){
   const hoy=obtenerClaveActual();
   const diaNum=parseInt(hoy.split("-")[2]);
   const claves=Object.keys(programaMes).sort();
-  const visibles=diaNum<=18?claves.slice(0,18):claves.slice(18);
+  const visibles=diaNum<=15?claves.slice(0,15):claves.slice(15);
   visibles.forEach(c=>{
     const d=document.createElement("div");
     d.className="dia-item";
