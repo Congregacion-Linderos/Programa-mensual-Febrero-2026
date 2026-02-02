@@ -42,6 +42,9 @@ body.dark .dia-item{background:rgba(255,255,255,0.08)}
 
   <p id="aviso" class="aviso">🔄 Programa actualizado para mañana</p>
 
+  <!-- === AGREGADO: AVISO ESPECIAL === -->
+  <p id="avisoEspecial" class="aviso" style="font-weight:600;color:var(--accent)"></p>
+
   <div class="card" id="programaDia">
     <div class="day" id="fecha"></div>
 
@@ -74,29 +77,29 @@ body.dark .dia-item{background:rgba(255,255,255,0.08)}
 /* === PROGRAMA MES: SIN CAMBIOS === */
 const programaMes = {
 "2026-02-01":{manana:{hora:"09:30",encargado:"Reunion Finde semana",territorio:"-",direccion:"Salon Del reino",numero:"-"}},
-"2026-02-02":{manana:{hora:"09:30",encargado:"Luis Troncoso",territorio:"14",direccion:"Familia Mamani (Fancisco Urzua)",numero:"4077"},tarde:{hora:"18:15",encargado:"Hector Carcamo",territorio:"12",direccion:"hna Soledad (Orozimbo Barboza)",numero:"3892"}},
-"2026-02-03":{manana:{hora:"09:30",encargado:"Benjamin Manzano",territorio:"18",direccion:"Familia Pires (Rio Caquena Norte)",numero:"4120"},tarde:{hora:"18:15",encargado:"Edmundo J.",territorio:"5",direccion:"Familia Guerrero (Orozimbo Barboza)",numero:"4249"}},
+"2026-02-02":{manana:{hora:"09:30",encargado:"Benjamin Manzano",territorio:"14",direccion:"Hna Adriana (Cancha Rayada)",numero:"3810"},tarde:{hora:"18:15",encargado:"Edmundo J",territorio:"19",direccion:"Familia Aros (PAsaje 2)",numero:"4424"}},
+"2026-02-03":{manana:{hora:"09:30",encargado:"Luis Troncoso",territorio:"18",direccion:"Familia Pires (Rio Caquena Norte)",numero:"4120"},tarde:{hora:"18:15",encargado:"Marco Carcamo",territorio:"5",direccion:"Familia Guerrero (Orozimbo Barboza)",numero:"4249"}},
 "2026-02-04":{manana:{hora:"09:30",encargado:"Mario Roco",territorio:"4",direccion:"Familia Roco (Fortunato Valencia)",numero:"4231"}},
-"2026-02-05":{manana:{hora:"09:30",encargado:"Luis Troncoso",territorio:"19",direccion:"Familia Aros (Pasaje 2)",numero:"4424"},tarde:{hora:"18:15",encargado:"Marco Carcamo",territorio:"28 y 29",direccion:"Hna Adriana (Cancha Rayada)",numero:"3810"}},
-"2026-02-06":{manana:{hora:"09:30",encargado:"Luis Piñones",territorio:"10",direccion:"Hna Soledad (Orozimbo Barboza)",numero:"3892"},tarde:{hora:"18:15",encargado:"Eduardo Poo",territorio:"15",direccion:"Familia Mamani (Francisco Urzua)",numero:"4077"}},
+"2026-02-05":{manana:{hora:"09:30",encargado:"Guillermo aliste",territorio:"19",direccion:"Familia Aros (Pasaje 2)",numero:"4424"},tarde:{hora:"18:15",encargado:"Marco Carcamo",territorio:"28 y 29",direccion:"Hna Adriana (Cancha Rayada)",numero:"3810"}},
+"2026-02-06":{manana:{hora:"09:30",encargado:"Luis Piñones",territorio:"10",direccion:"Hna Soledad (Orozimbo Barboza)",numero:"3892"},tarde:{hora:"18:15",encargado:"Eduardo Poo",territorio:"15",direccion:"Familia Pires (Rio Caquena Norte)",numero:"4120"}},
 "2026-02-07":{manana:{hora:"10:00",encargado:"Arreglo por grupo",territorio:"-",direccion:"-",numero:"-"}},
-"2026-02-08":{manana:{hora:"09:30",encargado:"Reunion Finde semana",territorio:"-",direccion:"Salon Del Reino",numero:"-"}},
-"2026-02-09":{manana:{hora:"09:30",encargado:"Luis Troncoso",territorio:"25",direccion:"Familia Aros (pasaje 2)",numero:"4424"},tarde:{hora:"18:15",encargado:"Hector Carcamo",territorio:"2",direccion:"Familia Guerrero (Orozimbo Barboza)",numero:"4249"}},
-"2026-02-10":{manana:{hora:"09:30",encargado:"Edmundo J.",territorio:"17",direccion:"Familia Pires (Rio Caquena Norte)",numero:"4120"},tarde:{hora:"18:15",encargado:"Nestor Usquiano",territorio:"15",direccion:"Familia Mamani (Francisco Urzua)",numero:"4077"}},
-"2026-02-11":{manana:{hora:"09:30",encargado:"Juan Carlos M",territorio:"4",direccion:"Familia Roco (Fortunato Valencia)",numero:"4231"}},
-"2026-02-12":{manana:{hora:"09:30",encargado:"Guillermo Aliste",territorio:"12",direccion:"Hna Soledad (Orozimbo Barboza)",numero:"3892"},tarde:{hora:"18:15",encargado:"Edmundo J.",territorio:"24",direccion:"Familia Aros (Pasaje 2)",numero:"4424"}},
-"2026-02-13":{manana:{hora:"09:30",encargado:"Luis Troncoso",territorio:"6",direccion:"familia Guerrero (Orozimbo barboza)",numero:"4249"},tarde:{hora:"18:15",encargado:"Hector Carcamo",territorio:"16",direccion:"Familia Mamani (Francisco Urzua)",numero:"4077"}},
+"2026-02-08":{manana:{hora:"09:30",encargado:"Benjamin Manzano",territorio:"Cartas",direccion:"Salon Del Reino",numero:"-"}},
+"2026-02-09":{manana:{hora:"09:30",encargado:"Benjamin Manzano",territorio:"25",direccion:"Familia Aros (Pasaje 2)",numero:"4424"},tarde:{hora:"18:15",encargado:"Edmundo J.",territorio:"1",direccion:"Familia Guerrero (Orozimbo Barboza)",numero:"4249"}},
+"2026-02-10":{manana:{hora:"09:30",encargado:"Luis Troncoso.",territorio:"17",direccion:"Familia Pires (Rio Caquena Norte)",numero:"4120"},tarde:{hora:"18:15",encargado:"Benjamin Manzano",territorio:"15",direccion:"Hna Adriana (Cancha Rayada)",numero:"3810"}},
+"2026-02-11":{manana:{hora:"09:30",encargado:"Luis Piñones",territorio:"2",direccion:"Familia Roco (Fortunato Valencia)",numero:"4231"}},
+"2026-02-12":{manana:{hora:"09:30",encargado:"Guillermo Aliste",territorio:"12",direccion:"Hna Soledad (Orozimbo Barboza)",numero:"3892"},tarde:{hora:"18:15",encargado:"Edmundo J.",territorio:"24",direccion:"Famila Pires (Rio Caquena Norte)",numero:"4120"}},
+"2026-02-13":{manana:{hora:"09:30",encargado:"Luis Troncoso",territorio:"5",direccion:"familia Guerrero (Orozimbo barboza)",numero:"4249"},tarde:{hora:"18:15",encargado:"Eduardo Poo",territorio:"16",direccion:"Hna Adriana (Cancha Rayada)",numero:"3810"}},
 "2026-02-14":{manana:{hora:"10:00",encargado:"Arreglo por grupo",territorio:"-",direccion:"-",numero:"-"}},
 "2026-02-15":{manana:{hora:"09:30",encargado:"Reunion Finde semana",territorio:"-",direccion:"Salon Del reino",numero:"-"}},
 "2026-02-16":{manana:{hora:"09:30",encargado:"Benjamin Manzano",territorio:"26",direccion:"Familia Pires (Rio Caquena Norte)",numero:"4120"},tarde:{hora:"18:15",encargado:"Edmundo J.",territorio:"10",direccion:"Hna Soledad (Orozimbo barboza)",numero:"3892"}},
-"2026-02-17":{manana:{hora:"09:30",encargado:"Luis Piñones",territorio:"22",direccion:"Familia Aros (Pasaje 2)",numero:"4424"},tarde:{hora:"18:15",encargado:"Nestor Usquiano",territorio:"30 y 31",direccion:"Hna Adriana (Cancha Rayada)",numero:"3810"}},
+"2026-02-17":{manana:{hora:"09:30",encargado:"Luis Piñones",territorio:"22",direccion:"Familia Pires (Rio caquena Norte)",numero:"4120"},tarde:{hora:"18:15",encargado:"Nestor Usquiano",territorio:"30 y 31",direccion:"Hna Adriana (Cancha Rayada)",numero:"3810"}},
 "2026-02-18":{manana:{hora:"09:30",encargado:"Mario Roco",territorio:"14",direccion:"Familia Mamani (Francisco Urzua)",numero:"4077"}},
-"2026-02-19":{manana:{hora:"09:30",encargado:"Guillermo Aliste",territorio:"20",direccion:"Familia Aros (Pasaje 2)",numero:"4424"},tarde:{hora:"18:15",encargado:"Marco Carcamo",territorio:"7",direccion:"Familia Guerrero (Orozimbo Barboza)",numero:"4249"}},
-"2026-02-20":{manana:{hora:"09:30",encargado:"Luis Troncoso",territorio:"11",direccion:"Hna Soledad (Orozimbo Barboza)",numero:"3892"},tarde:{hora:"18:15",encargado:"Hector Carcamo",territorio:"8",direccion:"Familia Roco (Fortunato Valencia)",numero:"4231"}},
+"2026-02-19":{manana:{hora:"09:30",encargado:"Guillermo Aliste",territorio:"20",direccion:"Famila Pires (Rio Caquena Norte)",numero:"4120"},tarde:{hora:"18:15",encargado:"Marco Carcamo",territorio:"7",direccion:"Familia Guerrero (Orozimbo Barboza)",numero:"4249"}},
+"2026-02-20":{manana:{hora:"09:30",encargado:"Luis Troncoso",territorio:"6",direccion:"Familia Roco (Fortunato Valencia)",numero:"4231"},tarde:{hora:"18:15",encargado:"Eduardo Poo",territorio:"8",direccion:"Familia Roco (Fortunato Valencia)",numero:"4231"}},
 "2026-02-21":{manana:{hora:"10:00",encargado:"Arreglo por grupo",territorio:"-",direccion:"-",numero:"-"}},
-"2026-02-22":{manana:{hora:"09:30",encargado:"Reunion Finde semana",territorio:"-",direccion:"Salon Del Reino",numero:"-"}},
-"2026-02-23":{manana:{hora:"09:30",encargado:"Roberto Aros",territorio:"19",direccion:"Familia Aros (Pasaje 2)",numero:"4424"},tarde:{hora:"18:15",encargado:"Josue Leal",territorio:"13",direccion:"Familia Mamani (Francisco Urzua)",numero:"4077"}},
-"2026-02-24":{manana:{hora:"09:30",encargado:"Edmundo J.",territorio:"12",direccion:"Hna Soledad (Orozimbo Barboza)",numero:"3892"},tarde:{hora:"18:15",encargado:"Eduardo Poo",territorio:"28 y 29",direccion:"Hna Adriana (Cancha Rayada)",numero:"3810"}},
+"2026-02-22":{manana:{hora:"09:30",encargado:"Cartas",territorio:"-",direccion:"Salon Del Reino",numero:"-"}},
+"2026-02-23":{manana:{hora:"09:30",encargado:"Benjamin Manzano",territorio:"19",direccion:"Familia Aros (Pasaje 2)",numero:"4424"},tarde:{hora:"18:15",encargado:"Josue Leal",territorio:"13",direccion:"Familia Mamani (Francisco Urzua)",numero:"4077"}},
+"2026-02-24":{manana:{hora:"09:30",encargado:"Luis Troncoso",territorio:"12",direccion:"Hna Soledad (Orozimbo Barboza)",numero:"3892"},tarde:{hora:"18:15",encargado:"Edmundo J.",territorio:"28 y 29",direccion:"Hna Adriana (Cancha Rayada)",numero:"3810"}},
 "2026-02-25":{manana:{hora:"09:30",encargado:"Mario Roco",territorio:"27",direccion:"Familia Pires (Rio Caquena Norte)",numero:"4120"}},
 "2026-02-26":{manana:{hora:"09:30",encargado:"Guillermo Aliste",territorio:"4",direccion:"Familia Guerrero (orozimbo Barboza)",numero:"4249"},tarde:{hora:"18:15",encargado:"Nestor Usquiano",territorio:"3",direccion:"Familia Roco (Fortunato Valencia)",numero:"4231"}},
 "2026-02-27":{manana:{hora:"09:30",encargado:"Hector Carcamo",territorio:"20",direccion:"Familia Aros (Pasaje 2)",numero:"4424"},tarde:{hora:"18:15",encargado:"Eduardo Poo",territorio:"12",direccion:"Hna Soledad (Orozimbo Barboza)",numero:"3892"}},
@@ -116,14 +119,31 @@ function actualizarPrograma(){mostrarDia(obtenerClaveActual());}
 
 function mostrarDia(c){
   const d=programaMes[c];if(!d)return;
+
+  /* === AGREGADO: AVISO DÍAS 7 Y 21 === */
+  const diaAviso=parseInt(c.split("-")[2]);
+  if(diaAviso===7){
+    avisoEspecial.textContent="📌 Semana Visita SS grupo 1";
+    avisoEspecial.style.display="block";
+  }else if(diaAviso===21){
+    avisoEspecial.textContent="📌 Semana Visita SS grupo 2";
+    avisoEspecial.style.display="block";
+  }else{
+    avisoEspecial.style.display="none";
+  }
+
   const p=c.split("-"),f=new Date(p[0],p[1]-1,p[2]);
   const dias=["Domingo","Lunes","Martes","Miércoles","Jueves","Viernes","Sábado"];
   const meses=["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"];
   fecha.textContent=`${dias[f.getDay()]} ${f.getDate()} de ${meses[f.getMonth()]} ${f.getFullYear()}`;
+
   ["mh","me","mt","md","mn","th","te","tt","td","tn"].forEach(id=>document.getElementById(id).textContent="—");
+
   if(d.manana)Object.values(d.manana).forEach((v,i)=>document.getElementById(["mh","me","mt","md","mn"][i]).textContent=v);
-  if(d.tarde){tardeSection.style.display="block";Object.values(d.tarde).forEach((v,i)=>document.getElementById(["th","te","tt","td","tn"][i]).textContent=v);}
-  else tardeSection.style.display="none";
+  if(d.tarde){
+    tardeSection.style.display="block";
+    Object.values(d.tarde).forEach((v,i)=>document.getElementById(["th","te","tt","td","tn"][i]).textContent=v);
+  }else tardeSection.style.display="none";
 }
 
 function cargarListaDias(){
