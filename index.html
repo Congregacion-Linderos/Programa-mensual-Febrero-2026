@@ -6,7 +6,6 @@
 <title>Programa Diario</title>
 
 <style>
-/* === ESTILOS SIN CAMBIOS === */
 :root {
   --bg:#f3f4f6;--card:#fff;--text:#111827;--sub:#6b7280;--accent:#047857;
 }
@@ -15,164 +14,234 @@ body.dark {
 }
 body{margin:0;font-family:Arial;background:var(--bg);color:var(--text)}
 .container{max-width:420px;margin:auto;padding:16px}
-.top{display:flex;justify-content:space-between;align-items:center}
-.toggle{border:none;background:var(--card);padding:6px 10px;border-radius:10px;cursor:pointer}
+
+.top{
+display:flex;
+justify-content:space-between;
+align-items:center
+}
+
+.toggle{
+border:none;
+background:var(--card);
+padding:6px 10px;
+border-radius:10px;
+cursor:pointer
+}
+
+.btnHoy{
+border:none;
+background:var(--accent);
+color:white;
+padding:6px 12px;
+border-radius:10px;
+font-weight:600;
+cursor:pointer
+}
+
 .card{margin-top:20px;background:var(--card);border-radius:18px;padding:20px}
 .day{font-size:18px;font-weight:600;color:var(--accent)}
 .section{margin-top:14px;padding-top:10px;border-top:1px solid #e5e7eb}
 .row{display:flex;justify-content:space-between;margin:6px 0}
+
 .aviso{display:none;font-size:13px;color:var(--sub)}
-.dia-item{padding:8px 6px;border-radius:10px;cursor:pointer;background:rgba(0,0,0,0.05);font-size:14px;text-align:center}
-body.dark .dia-item{background:rgba(255,255,255,0.08)}
-.dia-hoy{border:2px solid var(--accent);font-weight:600}
-.dia-hoy-real{background:var(--accent);color:#fff}
-#listaDias{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;margin-top:8px}
+
+.dia-item{
+padding:8px 6px;
+border-radius:10px;
+cursor:pointer;
+background:rgba(0,0,0,0.05);
+font-size:14px;
+text-align:center
+}
+
+body.dark .dia-item{
+background:rgba(255,255,255,0.08)
+}
+
+.dia-hoy{
+background:var(--accent);
+color:white;
+font-weight:600
+}
+
+#listaDias{
+display:grid;
+grid-template-columns:repeat(7,1fr);
+gap:6px;
+margin-top:8px
+}
 </style>
 </head>
 
 <body>
+
 <div class="container">
-  <div class="top">
-    <div>
-      <h2>Programa del día</h2>
-      <small style="font-size:12px;color:var(--sub)">CONGREGACIÓN LINDEROS</small>
-    </div>
-    <button class="toggle" id="modoBtn" onclick="toggleMode()">🌙</button>
-  </div>
 
-  <p id="aviso" class="aviso">🔄 Programa actualizado para mañana</p>
+<div class="top">
 
-  <!-- === AGREGADO: AVISO ESPECIAL === -->
-  <p id="avisoEspecial" class="aviso" style="font-weight:600;color:var(--accent)"></p>
+<div>
+<h2>Programa del día</h2>
+<small style="font-size:12px;color:var(--sub)">CONGREGACIÓN LINDEROS</small>
+</div>
 
-  <div class="card" id="programaDia">
-    <div class="day" id="fecha"></div>
+<div style="display:flex;gap:6px">
+<button class="btnHoy" onclick="mostrarDia(obtenerClaveActual())">HOY</button>
+<button class="toggle" id="modoBtn" onclick="toggleMode()">🌙</button>
+</div>
 
-    <div class="section">
-      <strong>☀️ Mañana</strong>
-      <div class="row">🕘 Hora <span id="mh"></span></div>
-      <div class="row">👤 Encargado <span id="me"></span></div>
-      <div class="row">📍 Territorio <span id="mt"></span></div>
-      <div class="row">🏠 Dirección <span id="md"></span></div>
-      <div class="row">🔢 N° Casa <span id="mn"></span></div>
-    </div>
+</div>
 
-    <div class="section" id="tardeSection">
-      <strong>🌆 Tarde</strong>
-      <div class="row">🕓 Hora <span id="th"></span></div>
-      <div class="row">👤 Encargado <span id="te"></span></div>
-      <div class="row">📍 Territorio <span id="tt"></span></div>
-      <div class="row">🏠 Dirección <span id="td"></span></div>
-      <div class="row">🔢 N° Casa <span id="tn"></span></div>
-    </div>
-  </div>
+<p id="aviso" class="aviso">🔄 Programa actualizado para mañana</p>
 
-  <div class="card">
-    <strong>📅 Otros días</strong>
-    <div id="listaDias"></div>
-  </div>
+<div class="card" id="programaDia">
+
+<div class="day" id="fecha"></div>
+
+<div class="section">
+<strong>☀️ Mañana</strong>
+<div class="row">🕘 Hora <span id="mh"></span></div>
+<div class="row">👤 Encargado <span id="me"></span></div>
+<div class="row">📍 Territorio <span id="mt"></span></div>
+<div class="row">🏠 Dirección <span id="md"></span></div>
+<div class="row">🔢 N° Casa <span id="mn"></span></div>
+</div>
+
+<div class="section" id="tardeSection">
+<strong>🌆 Tarde</strong>
+<div class="row">🕓 Hora <span id="th"></span></div>
+<div class="row">👤 Encargado <span id="te"></span></div>
+<div class="row">📍 Territorio <span id="tt"></span></div>
+<div class="row">🏠 Dirección <span id="td"></span></div>
+<div class="row">🔢 N° Casa <span id="tn"></span></div>
+</div>
+
+</div>
+
+<div class="card">
+<strong>📅 Otros días</strong>
+<div id="listaDias"></div>
+</div>
+
 </div>
 
 <script>
-/* === PROGRAMA MES: SIN CAMBIOS === */
+
+/* TU PROGRAMA ORIGINAL (NO SE CAMBIA) */
+
 const programaMes = {
-"2026-02-01":{manana:{hora:"09:30",encargado:"Reunion Finde semana",territorio:"-",direccion:"Salon Del reino",numero:"-"}},
-"2026-02-02":{manana:{hora:"09:30",encargado:"Benjamin Manzano",territorio:"14",direccion:"Hna Adriana (Cancha Rayada)",numero:"3810"},tarde:{hora:"18:15",encargado:"Edmundo J",territorio:"19",direccion:"Familia Aros (PAsaje 2)",numero:"4424"}},
-"2026-02-03":{manana:{hora:"09:30",encargado:"Luis Troncoso",territorio:"18",direccion:"Familia Pires (Rio Caquena Norte)",numero:"4120"},tarde:{hora:"18:15",encargado:"Marco Carcamo",territorio:"5",direccion:"Familia Roco (Fortunato Valencia)",numero:"4231"}},
-"2026-02-04":{manana:{hora:"09:30",encargado:"Mario Roco",territorio:"4",direccion:"Familia Roco (Fortunato Valencia)",numero:"4231"}},
-"2026-02-05":{manana:{hora:"09:30",encargado:"Guillermo aliste",territorio:"19",direccion:"Familia Aros (Pasaje 2)",numero:"4424"},tarde:{hora:"18:15",encargado:"Marco Carcamo",territorio:"28 y 29",direccion:"Hna Adriana (Cancha Rayada)",numero:"3810"}},
-"2026-02-06":{manana:{hora:"09:30",encargado:"Luis Piñones",territorio:"10",direccion:"Hna Soledad (Orozimbo Barboza)",numero:"3892"},tarde:{hora:"18:15",encargado:"Eduardo Poo",territorio:"15",direccion:"Familia Pires (Rio Caquena Norte)",numero:"4120"}},
-"2026-02-07":{manana:{hora:"10:00",encargado:"Arreglo por grupo",territorio:"-",direccion:"-",numero:"-"}},
-"2026-02-08":{manana:{hora:"09:30",encargado:"Benjamin Manzano",territorio:"Cartas",direccion:"Salon Del Reino",numero:"-"}},
-"2026-02-09":{manana:{hora:"09:30",encargado:"Benjamin Manzano",territorio:"25",direccion:"Familia Aros (Pasaje 2)",numero:"4424"},tarde:{hora:"18:15",encargado:"Edmundo J.",territorio:"1",direccion:"Familia Guerrero (Orozimbo Barboza)",numero:"4249"}},
-"2026-02-10":{manana:{hora:"09:30",encargado:"Luis Troncoso.",territorio:"17",direccion:"Familia Pires (Rio Caquena Norte)",numero:"4120"},tarde:{hora:"18:15",encargado:"Benjamin Manzano",territorio:"15",direccion:"Hna Adriana (Cancha Rayada)",numero:"3810"}},
-"2026-02-11":{manana:{hora:"09:30",encargado:"Luis Piñones",territorio:"2",direccion:"Familia Roco (Fortunato Valencia)",numero:"4231"}},
-"2026-02-12":{manana:{hora:"09:30",encargado:"Guillermo Aliste",territorio:"12",direccion:"Hna Soledad (Orozimbo Barboza)",numero:"3892"},tarde:{hora:"18:15",encargado:"Edmundo J.",territorio:"24",direccion:"Famila Pires (Rio Caquena Norte)",numero:"4120"}},
-"2026-02-13":{manana:{hora:"09:30",encargado:"Luis Troncoso",territorio:"5",direccion:"familia Guerrero (Orozimbo barboza)",numero:"4249"},tarde:{hora:"18:15",encargado:"Eduardo Poo",territorio:"16",direccion:"Hna Adriana (Cancha Rayada)",numero:"3810"}},
-"2026-02-14":{manana:{hora:"10:00",encargado:"Arreglo por grupo",territorio:"-",direccion:"-",numero:"-"}},
-"2026-02-15":{manana:{hora:"09:30",encargado:"Reunion Finde semana",territorio:"-",direccion:"Salon Del reino",numero:"-"}},
-"2026-02-16":{manana:{hora:"09:30",encargado:"Luis Troncoso",territorio:"20",direccion:"Familia Pires (Rio Caquena Norte)",numero:"4120"},tarde:{hora:"18:30",encargado:"Edmundo J.",territorio:"10",direccion:"Hna Soledad (Orozimbo barboza)",numero:"3892"}},
-"2026-02-17":{manana:{hora:"09:30",encargado:"Luis Piñones",territorio:"19",direccion:"Familia Pires (Rio caquena Norte)",numero:"4120"},tarde:{hora:"18:30",encargado:"Marcos C.",territorio:"30 y 31",direccion:"Hna Adriana (Cancha Rayada)",numero:"3810"}},
-"2026-02-18":{manana:{hora:"09:30",encargado:"Mario Roco",territorio:"14",direccion:"Familia Mamani (Francisco Urzua)",numero:"4077"}},
-"2026-02-19":{manana:{hora:"09:30",encargado:"Guillermo Aliste",territorio:"27",direccion:"Famila Pires (Rio Caquena Norte)",numero:"4120"},tarde:{hora:"18:30",encargado:"Hector Carcamo",territorio:"6",direccion:"Familia Guerrero (Orozimbo Barboza)",numero:"4249"}},
-"2026-02-20":{manana:{hora:"09:30",encargado:"Luis Troncoso",territorio:"7",direccion:"Familia Roco (Fortunato Valencia)",numero:"4231"},tarde:{hora:"18:30",encargado:"Eduardo Poo",territorio:"8",direccion:"Familia Roco (Fortunato Valencia)",numero:"4231"}},
-"2026-02-21":{manana:{hora:"10:00",encargado:"Arreglo por grupo",territorio:"-",direccion:"-",numero:"-"}},
-"2026-02-22":{manana:{hora:"09:30",encargado:"Reunion Finde semana",territorio:"-",direccion:"Salon Del Reino",numero:"-"}},
-"2026-02-23":{manana:{hora:"09:30",encargado:"Benjamin Manzano",territorio:"21",direccion:"Familia Aros (Pasaje 2)",numero:"4424"},tarde:{hora:"18:30",encargado:"Josue Leal",territorio:"13",direccion:"Familia Aros (Pasaje 2)",numero:"4424"}},
-"2026-02-24":{manana:{hora:"09:30",encargado:"Luis Troncoso",territorio:"12",direccion:"Hna Soledad (Orozimbo Barboza)",numero:"3892"},tarde:{hora:"18:30",encargado:"Edmundo J.",territorio:"12",direccion:"Hna Soledad (Orozimbo BArboza)",numero:"3892"}},
-"2026-02-25":{manana:{hora:"09:30",encargado:"Luis Piñones",territorio:"27",direccion:"Familia Pires (Rio Caquena Norte)",numero:"4120"}},
-"2026-02-26":{manana:{hora:"09:30",encargado:"Guillermo Aliste",territorio:"4",direccion:"Familia Guerrero (orozimbo Barboza)",numero:"4249"},tarde:{hora:"18:30",encargado:"Marco C",territorio:"3",direccion:"Familia Roco (Fortunato Valencia)",numero:"4231"}},
-"2026-02-27":{manana:{hora:"09:30",encargado:"Hector Carcamo",territorio:"25 y 26",direccion:"Familia Pires (Rio caquena Norte",numero:"4120"},tarde:{hora:"18:30",encargado:"Eduardo Poo",territorio:"11",direccion:"Hna Soledad (Orozimbo Barboza)",numero:"3892"}},
-"2026-02-28":{manana:{hora:"10:00",encargado:"Arreglo por grupo",territorio:"-",direccion:"-",numero:"-"}}
+"2026-03-02":{mañana:{hora:"09:30",encargado:"Luis Troncoso",territorio:"14",direccion:"Hna Adriana (Cancha Rayada)",numero:"3810"},tarde:{hora:"18:30",encargado:"Edmundo J.",territorio:"14",direccion:"Hna Adriana (Cancha Rayada)",numero:"3810"}},             
+"2026-03-03":{mañana:{hora:"09:30",encargado:"Luis Troncoso",territorio:"17",direccion:"Fam.Pires (Rio caquena Norte)",numero"4120"},tarde:{hora:"18:30",encargado:"Marco C.",territorio:"17",direccion:"Fam.Pires (Rio caquena Norte)",numero:"4120"}},
+"2026-03-04":{mañana:{hora:"09:30",encargado:"Mario Roco",territorio:"3",direccion:"Fam.Roco (Fortunato Valencia)",numero:"4231"}},
+"2026-03-05":{mañana:{hora:"09:30",encargado:"Nestor U.",territorio:"19",direccion:"Fam.Aros (Pasaje 2)",numero"4424"},tarde:{hora:"18:30",encargado:"Marco C.",territorio:"19",direccion:"Fam.Aros (Pasaje 2)",numero:"4424"}},  
+"2026-03-06":{mañana:{hora:"09:30",encargado:"Luis Piñones",territorio:"18",direccion:"Fam.Pires (Rio caquena Norte)",numero"4120"},tarde:{hora:"18:30",encargado:"Eduardo P.",territorio:"18",direccion:"Fam.Pires (Rio caquena Norte)",numero:"4120"}},
+"2026-03-07":{mañana:{hora:"09:30",encargado:"Benjamin M",territorio:"2 y 3",direccion:"Fam.Guerrero (Orozimbo Barboza),numero:"4249"}},
+"2026-03-08":{mañana:{hora:"11:30",encargado:"Hector C.",Cartas:"-",direccion:"Salon Del Reino"}},
+"2026-03-09":{mañana:{hora:"09:30",encargado:"Benjamin M.",territorio:"21",direccion:"Fam.Aros (Pasaje 2)",numero"4424"},tarde:{hora:"18:30",encargado:"Edmundo J.",territorio:"21",direccion:"Fam.Aros (Pasaje 2)",numero:"4424"}},
+"2026-03-10":{mañana:{hora:"09:30",encargado:"Luis Troncoso",territorio:"16",direccion:"Fam.Pires (Rio caquena Norte)",numero"4120"},tarde:{hora:"18:30",encargado:"Nestor U.",territorio:"16",direccion:"Fam.Pires (Rio caquena norte)",numero:"4120"}},
+"2026-03-11":{mañana:{hora:"09:30",encargado:"Luis Piñones",Territorio:"15",direccion:"Hna Adriana (Cancha Rayada)",numero:"3810"}},
+"2026-03-12":{mañana:{hora:"09:30",encargado:"Guillermo Aliste",territorio:"13",direccion:"Hna Soledad (Orozimbo Barboza)",numero"3892"},tarde:{hora:"18:30",encargado:"Edmundo J.",territorio:"13",direccion:"Hna Soledad (Orozimbo Barboza)",numero:"3892"}},
+"2026-03-13":{mañana:{hora:"09:30",encargado:"Oscar Landivar",territorio:"20",direccion:"Fam.Roco (Fortunato Valencia)",numero"4231"},tarde:{hora:"18:30",encargado:"Eduardo P.",territorio:"20",direccion:"Fam.Roco (Fortunato Valencia)",numero:"4231"}},
+"2026-03-14":{mañana:{hora:"09:30",encargado:"Nestor U.",territorio:"30 y 31",direccion:"Fam.Guerrero (Orozimbo Barboza)",numero:"4249"}},
+"2026-03-15":{mañana:{hora:"11:30",encargaso:"Benjamin M",Cartas:"-",direccion:"Salon Del Reino"}};
 };
 
+/* FUNCIONES */
+
 function obtenerClaveActual(){
-  const ahora=new Date(),f=new Date();
-  if(ahora.getHours()>19||(ahora.getHours()===19&&ahora.getMinutes()>=30)){
-    f.setDate(f.getDate()+1);
-    aviso.style.display="block";
-  }
-  return f.getFullYear()+"-"+String(f.getMonth()+1).padStart(2,"0")+"-"+String(f.getDate()).padStart(2,"0");
+const ahora=new Date(),f=new Date();
+
+if(ahora.getHours()>19||(ahora.getHours()===19&&ahora.getMinutes()>=30)){
+f.setDate(f.getDate()+1);
+aviso.style.display="block";
 }
 
-function actualizarPrograma(){mostrarDia(obtenerClaveActual());}
+return f.getFullYear()+"-"+String(f.getMonth()+1).padStart(2,"0")+"-"+String(f.getDate()).padStart(2,"0");
+}
+
+function actualizarPrograma(){
+mostrarDia(obtenerClaveActual());
+}
 
 function mostrarDia(c){
-  const d=programaMes[c];if(!d)return;
 
-  /* === AGREGADO: AVISO DÍAS 7 Y 21 === */
-  const diaAviso=parseInt(c.split("-")[2]);
-  if(diaAviso===7){
-    avisoEspecial.textContent="📌 Semana Visita SS grupo 1";
-    avisoEspecial.style.display="block";
-  }else if(diaAviso===21){
-    avisoEspecial.textContent="📌 Semana Visita SS grupo 2";
-    avisoEspecial.style.display="block";
-  }else{
-    avisoEspecial.style.display="none";
-  }
+const d=programaMes[c];
+if(!d)return;
 
-  const p=c.split("-"),f=new Date(p[0],p[1]-1,p[2]);
-  const dias=["Domingo","Lunes","Martes","Miércoles","Jueves","Viernes","Sábado"];
-  const meses=["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"];
-  fecha.textContent=`${dias[f.getDay()]} ${f.getDate()} de ${meses[f.getMonth()]} ${f.getFullYear()}`;
+const p=c.split("-");
+const f=new Date(p[0],p[1]-1,p[2]);
 
-  ["mh","me","mt","md","mn","th","te","tt","td","tn"].forEach(id=>document.getElementById(id).textContent="—");
+const dias=["Domingo","Lunes","Martes","Miércoles","Jueves","Viernes","Sábado"];
+const meses=["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"];
 
-  if(d.manana)Object.values(d.manana).forEach((v,i)=>document.getElementById(["mh","me","mt","md","mn"][i]).textContent=v);
-  if(d.tarde){
-    tardeSection.style.display="block";
-    Object.values(d.tarde).forEach((v,i)=>document.getElementById(["th","te","tt","td","tn"][i]).textContent=v);
-  }else tardeSection.style.display="none";
+fecha.textContent=`${dias[f.getDay()]} ${f.getDate()} de ${meses[f.getMonth()]} ${f.getFullYear()}`;
+
+["mh","me","mt","md","mn","th","te","tt","td","tn"].forEach(id=>document.getElementById(id).textContent="—");
+
+if(d.manana){
+Object.values(d.manana).forEach((v,i)=>document.getElementById(["mh","me","mt","md","mn"][i]).textContent=v);
+}
+
+if(d.tarde){
+tardeSection.style.display="block";
+Object.values(d.tarde).forEach((v,i)=>document.getElementById(["th","te","tt","td","tn"][i]).textContent=v);
+}else{
+tardeSection.style.display="none";
+}
+
 }
 
 function cargarListaDias(){
-  listaDias.innerHTML="";
-  const hoy=obtenerClaveActual();
-  const diaNum=parseInt(hoy.split("-")[2]);
-  const claves=Object.keys(programaMes).sort();
-  const visibles=diaNum<=15?claves.slice(0,15):claves.slice(15);
-  visibles.forEach(c=>{
-    const d=document.createElement("div");
-    d.className="dia-item";
-    if(c===hoy)d.classList.add("dia-hoy","dia-hoy-real");
-    d.textContent=c.split("-")[2];
-    d.onclick=()=>mostrarDia(c);
-    listaDias.appendChild(d);
-  });
+
+listaDias.innerHTML="";
+
+const hoy=obtenerClaveActual();
+const diaNum=parseInt(hoy.split("-")[2]);
+
+const claves=Object.keys(programaMes).sort();
+
+const visibles=diaNum<=15?claves.slice(0,15):claves.slice(15);
+
+visibles.forEach(c=>{
+
+const d=document.createElement("div");
+d.className="dia-item";
+
+if(c===hoy){
+d.classList.add("dia-hoy");
+}
+
+d.textContent=c.split("-")[2];
+
+d.onclick=()=>mostrarDia(c);
+
+listaDias.appendChild(d);
+
+});
+
 }
 
 actualizarPrograma();
 cargarListaDias();
-setInterval(()=>{actualizarPrograma();cargarListaDias();},60000);
 
-if(localStorage.getItem("modo")==="dark")document.body.classList.add("dark");
-modoBtn.textContent=document.body.classList.contains("dark")?"🌞":"🌙";
-function toggleMode(){
-  document.body.classList.toggle("dark");
-  localStorage.setItem("modo",document.body.classList.contains("dark")?"dark":"light");
-  modoBtn.textContent=document.body.classList.contains("dark")?"🌞":"🌙";
+setInterval(()=>{
+actualizarPrograma();
+cargarListaDias();
+},60000);
+
+if(localStorage.getItem("modo")==="dark"){
+document.body.classList.add("dark");
 }
+
+modoBtn.textContent=document.body.classList.contains("dark")?"🌞":"🌙";
+
+function toggleMode(){
+document.body.classList.toggle("dark");
+localStorage.setItem("modo",document.body.classList.contains("dark")?"dark":"light");
+modoBtn.textContent=document.body.classList.contains("dark")?"🌞":"🌙";
+}
+
 </script>
+
 </body>
 </html>
