@@ -216,10 +216,12 @@ mostrarDia(obtenerClaveActual());
 }
 
 function mostrarDia(c){
-
 const d=programaMes[c];
-if(!d)return;
 
+if(!d){
+document.getElementById("fecha").textContent = "No hay programa para este día";
+return;
+}
 const p=c.split("-");
 const f=new Date(p[0],p[1]-1,p[2]);
 
